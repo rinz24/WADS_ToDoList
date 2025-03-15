@@ -10,7 +10,7 @@ import './Dashboard.css'
 function Dashboard() {
     const [currID, setCurrent] = useState(4)
     const [list, setList] = useState([
-        {id: 1, content: "Wash the dishes"},
+        {id: 1, content: "Wivghgiyhoujn"},
         {id: 2, content: "Sweep the floors"},
         {id: 3, content: "Do homeworks"}
     ])
