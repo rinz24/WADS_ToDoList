@@ -24,7 +24,7 @@ function App() {
     setList(list.filter((item) => item.id !== (id)))
     console.log(list)
   }
-
+  
   return (
     <>
       <header>
