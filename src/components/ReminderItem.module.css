@@ -1,0 +1,42 @@
+.item{
+    display         : flex;
+    align-items     : center;
+    gap             : 8px;
+    border-bottom   : solid hsla(0, 0%, 50%, 0.25) 2px;
+    padding         : 0 10px;
+    margin          : 0 10px;
+    transition      : background-color 0.2s;
+}
+
+.item:hover{
+    background-color: hsla(0, 0%, 5%, 0.50);
+}
+
+.item div{
+    border          : solid red;
+}
+
+.item button{
+    font-size       : 1.2em;
+    border          : none;
+    border-radius   : 10px;
+    background      : none;
+
+    transition      : background-color 0.1s transform 0.1s;
+    cursor          : pointer;
+}
+
+.item button:hover{
+    transform       : scale(1.2);
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+.item input{
+    height          : 20px;
+    width           : 20px;
+}
+
+.item p{
+    font-size       : 1.1em;
+    flex-grow       : 1;
+}

@@ -1,0 +1,24 @@
+.hl{
+    display: table-row;
+    width: fit-content;
+}
+
+.cell_align{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.img_con{
+    padding: 0 20px;
+}
+
+.logo{
+    border-radius: 100%;
+    box-shadow: 5px 5px 15px rgb(5, 5, 5, 0.5);
+    max-width: 120px;
+}
+
+.text{
+    font-size: 2em;
+    text-shadow: 5px 5px 15px rgb(5, 5, 5, 0.5);
+}
