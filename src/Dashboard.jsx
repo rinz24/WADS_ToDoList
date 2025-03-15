@@ -4,6 +4,7 @@ import HeaderLogo from './components/HeaderLogo.jsx'
 import ReminderItem from './components/ReminderItem.jsx'
 import ContainerTitle from './components/ContainerTitle.jsx'
 import DecoyFolder from './components/DecoyFolder.jsx'
+import ExitButton from './components/ExitButton.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -30,6 +31,7 @@ function Dashboard() {
         <>
         <header>
             <HeaderLogo />
+            <ExitButton />
         </header>
         <main>
             <section className="title">
@@ -52,6 +54,7 @@ function Dashboard() {
                 </div>
                 <div style={{width: "60%"}}>
                     <ContainerTitle title="📅 Schedule"/>
+                    <h1 style={{textAlign: "center"}}>Content Coming Soon :)</h1>
                 </div>
             </section>
         </main>

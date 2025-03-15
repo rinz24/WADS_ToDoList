@@ -1,0 +1,20 @@
+.exit{
+    display         : flex;
+    align-items     : center;
+
+    height          : 70px;
+    font-size       : 30px;
+
+    border          : none;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    border-radius   : 50px;
+    transition: background-color 0.2s;
+}
+
+.exit:hover{
+    background-color: hsl(0, 100%, 60%);
+}
+
+.exit *{
+    padding: 0 15px;
+}
