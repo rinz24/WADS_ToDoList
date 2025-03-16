@@ -21,7 +21,7 @@
     margin-top: 10px;
 }
 
-input {
+.input {
     border: none;
     border-bottom: solid gray 1px;
 
@@ -47,10 +47,10 @@ input {
     cursor: pointer;
 }
 
-.login-btn:hover {
+.btn:hover {
     transform: scale(1.05);
 }
 
-.login-btn:active {
+.btn:active {
     transform: scale(1);
 }

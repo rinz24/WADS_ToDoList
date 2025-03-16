@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
+import { getFirestore, query, collection, where, doc, addDoc, getDocs, updateDoc, deleteDoc} from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut} from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -82,5 +82,27 @@ const register = async (name, email, password) => {
     }
 };
 
-export { auth, db, signInWithEmailAndPassword, signIn, signOut, logIn, register, sendPasswordReset }
+const getReminders = async () => {
+    try{
+        const querySnapshot = await getDocs(collection(db, "reminders"));
+        const list = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        console.log(list)
+        return list
+    }
+    catch (err){
+        console.error(err)
+        return [];
+    }
+};
 
+const finishTask = async (docId) => {
+    const docRef = doc(db, "reminders", docId);
+    await updateDoc(docRef, {completed: true});
+    console.log("Task Finishedd!");
+};
+
+export { auth, signInWithEmailAndPassword, signIn, signOut, logIn, register, sendPasswordReset }
+export { db }

@@ -4,7 +4,7 @@ import { auth, signInWithEmailAndPassword, signIn } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import SignInLogo from "../components/SignInLogo";
-import "./AuthStyles.css";
+import styles from "./AuthStyles.module.css";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -14,13 +14,13 @@ function Login() {
     useEffect(() => {if (user) navigate("/dashboard");}, [user, loading]);
     return (
         <>
-            <div className="container">
+            <div className={styles.container}>
                 <SignInLogo />
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                <input className={styles.input} type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
+                <input className={styles.input} type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
 
-                <button className="btn" onClick={() => signInWithEmailAndPassword(email, password)}> Login </button>
-                <button className="btn" style={{ background: "#4285f4" }} onClick={signIn}> Login with Google </button>
+                <button className={styles.btn} onClick={() => signInWithEmailAndPassword(email, password)}> Login </button>
+                <button className={styles.btn} style={{ background: "#4285f4" }} onClick={signIn}> Login with Google </button>
                 <div>
                     <Link to="/reset">Forgot Password</Link>
                 </div>
