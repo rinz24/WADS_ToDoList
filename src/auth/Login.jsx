@@ -9,7 +9,7 @@ import styles from "./AuthStyles.module.css";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     useEffect(() => {if (user) navigate("/dashboard");}, [user, loading]);
     return (
@@ -19,7 +19,7 @@ function Login() {
                 <input className={styles.input} type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
                 <input className={styles.input} type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
 
-                <button className={styles.btn} onClick={() => signInWithEmailAndPassword(email, password)}> Login </button>
+                <button className={styles.btn} onClick={() => signInWithEmailAndPassword(auth, email, password)}> Login </button>
                 <button className={styles.btn} style={{ background: "#4285f4" }} onClick={signIn}> Login with Google </button>
                 <div>
                     <Link to="/reset">Forgot Password</Link>

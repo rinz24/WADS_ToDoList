@@ -9,7 +9,7 @@ import styles from "./AuthStyles.module.css";
 
 function Reset() {
     const [email, setEmail] = useState("");
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     useEffect(() => {
         if (loading) return;
