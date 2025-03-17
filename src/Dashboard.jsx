@@ -5,9 +5,10 @@ import ContainerTitle from './components/ContainerTitle.jsx'
 import DecoyFolder from './components/DecoyFolder.jsx'
 import ExitButton from './components/ExitButton.jsx'
 import Modal from './components/Modal.jsx'
+import Tracker from './components/HomeworkTracker.jsx'
 import './Dashboard.css'
 
-import { doc, addDoc, deleteDoc, updateDoc, getDocs, collection, onSnapshot } from 'firebase/firestore'
+import { doc, addDoc, deleteDoc, updateDoc, collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase.js'
 
 function Dashboard() {
@@ -80,9 +81,9 @@ function Dashboard() {
                     {list.map((item, i) => (<ReminderItem key={i} content={item.task || ""} onXButton={() => delReminder(item.id)} onCheck={() => setCompleted(item.id, item.completed)} isCompleted={item.completed}/>))}
                     </div>
                 </div>
-                <div style={{width: "60%"}}>
+                <div style={{width: "65%"}}>
                     <ContainerTitle title="📅 Schedule"/>
-                    <h1 style={{textAlign: "center"}}>Content Coming Soon :)</h1>
+                    <Tracker />
                 </div>
             </section>
 
