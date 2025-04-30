@@ -1,5 +1,5 @@
 # To-Do List assignment
-Madde by Alrismany Abigail Sudjarwo (Ris)
+By Alrismany Abigail Sudjarwo (Ris) | L4BC | 2702414841
 
 # MongoDB Tests
 ![POST test](public/POST_test.png)
