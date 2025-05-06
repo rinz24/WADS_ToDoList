@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import HeaderLogo from './components/HeaderLogo.jsx'
 import ReminderItem from './components/ReminderItem.jsx'
@@ -6,25 +6,25 @@ import ContainerTitle from './components/ContainerTitle.jsx'
 import DecoyFolder from './components/DecoyFolder.jsx'
 import ExitButton from './components/ExitButton.jsx'
 import './Dashboard.css'
+import { addToDo, deleteToDo, getToDo } from './API/ToDoAPI.js'
 
 function Dashboard() {
-    const [currID, setCurrent] = useState(4)
-    const [list, setList] = useState([
-        {id: 1, content: "Wivghgiyhoujn"},
-        {id: 2, content: "Sweep the floors"},
-        {id: 3, content: "Do homeworks"}
-    ])
+    const [list, setList] = useState([])
+    useEffect(() => {renderItemsList()}, [])
 
-    const addRem = (content) => {
-        const item = {id: currID, content: content}
-        setList(list.concat(item))
-        console.log(list)
-        setCurrent(currID + 1)
+    const renderItemsList = async () => {
+        const data = await getToDo()
+        if (data) setList(data)
     }
 
-    const removeRem = (id) => {
-        setList(list.filter((item) => item.id !== (id)))
-        console.log(list)
+    const addItem = async (task) => {
+        await addToDo(task)
+        renderItemsList()
+    }
+
+    const remItem = async (id) => {
+        await deleteToDo(id)
+        renderItemsList()
     }
     
     return (
@@ -35,7 +35,7 @@ function Dashboard() {
         </header>
         <main>
             <section className="title">
-                <h3>😂 SEMESTER 4 SUCKS SO MUCH ASS!!! 😂</h3>
+                <h3>😂 My To-Do List 😂</h3>
             </section>
             <section>
                 <ContainerTitle title="🗂️ Folders (Coming Soon)" />
@@ -47,9 +47,9 @@ function Dashboard() {
             </section>
             <section className='interface'>
                 <div style={{width: "30%"}}>
-                    <ContainerTitle title="📌 Reminder" onclick={() => {addRem("test")}}/>
+                    <ContainerTitle title="📌 Reminder" onclick={() => {addItem("Test")}}/>
                     <div className="rem-list">
-                    {list.map((item, index) => (<ReminderItem key= {index} content={item.content} onXButton={() => removeRem(index)}/>))}
+                    {list.map((item, index) => (<ReminderItem key= {index} content={item.task} onXButton={() => remItem(item._id)}/>))}
                     </div>
                 </div>
                 <div style={{width: "60%"}}>

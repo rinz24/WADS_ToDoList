@@ -1,4 +1,4 @@
-import model from '../models/ToDoModel.js'
+import ToDo from '../models/ToDoModel.js'
 import express from 'express'
 
 const router = express.Router()
@@ -11,7 +11,7 @@ router.post('/add_todo', async (req, res) => {
             return res.status(400).json({ message: "Please fill in the required fields." })
         }
 
-        const newTodo = await model.create({
+        const newTodo = await ToDo.create({
             task,
             status: "ongoing"
         });
@@ -24,7 +24,7 @@ router.post('/add_todo', async (req, res) => {
 
 router.get('/get_todo', async (req, res) => {
     try {
-        const data = await model.find();
+        const data = await ToDo.find();
         res.status(200).json(data);
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -40,7 +40,7 @@ router.patch('/edit_todo/:id', async (req, res) => {
             task,
             status
         }
-        const updatedTodo = await model.findByIdAndUpdate(id, updateData, { new: true });
+        const updatedTodo = await ToDo.findByIdAndUpdate(id, updateData, { new: true });
 
         if (!updatedTodo) {
             return res.status(404).json({ message: "To-do not found." });
@@ -54,7 +54,7 @@ router.patch('/edit_todo/:id', async (req, res) => {
 router.delete('/delete_todo/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedTodo = await model.findByIdAndDelete(id);
+        const deletedTodo = await ToDo.findByIdAndDelete(id);
 
         if (!deletedTodo) {
             return res.status(404).json({ message: "To-do not found." });

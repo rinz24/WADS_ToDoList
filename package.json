@@ -6,8 +6,7 @@
   "scripts": {
     "client": "vite",
     "server": "cd server && npm run test",
-    "dev" : "concurrently \"npm run client\" \"npm run server\"",
-
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -17,6 +16,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "axios": "^1.9.0",
     "concurrently": "^9.1.2",
     "firebase": "^11.4.0",
     "framer-motion": "^12.5.0",

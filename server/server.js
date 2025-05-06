@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import session from 'express-session'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
@@ -10,7 +11,21 @@ const app = express();
 dotenv.config()
 
 app.use(express.json())
-app.use(cors())
+app.use(session({
+    secret: process.env.SESSION_KEY,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        httpOnly: true,
+        secure: false, // enable if running https
+        maxAge: 1000 * 60 * 60
+    }
+}))
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}))
 app.use(cookieParser())
 app.use("/service/todo", todoRoute)
 

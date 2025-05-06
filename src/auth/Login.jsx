@@ -9,9 +9,9 @@ import "./AuthStyles.css";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
-    useEffect(() => {if (user) navigate("/dashboard");}, [user, loading]);
+    useEffect(() => {if (user) navigate("/dashboard")}, [user, loading]);
     return (
         <>
             <div className="container">
