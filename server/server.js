@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 
 import todoRoute from "./routes/ToDoRoutes.js";
+import authRoute from "./routes/AuthRoutes.js"
 
 const app = express();
 dotenv.config()
@@ -28,6 +29,7 @@ app.use(cors({
 }))
 app.use(cookieParser())
 app.use("/service/todo", todoRoute)
+app.use("/auth", authRoute)
 
 const PORT = process.env.PORT
 const URI = process.env.URI
